@@ -29,7 +29,7 @@ var verifyClass = function(constructor) {
         var setting = options[optionName];
         delete options[optionName];
         return setting;
-      }
+      };
 
       options = _({
         usesNew: patternIs('pseudoclassical'),
@@ -45,9 +45,9 @@ var verifyClass = function(constructor) {
 
       prototypeOfInstances = (
         patternIs('functional') ? Object.prototype :
-        patternIs('functional-shared') ? Object.prototype :
-        patternIs('pseudoclassical') ? constructor.prototype :
-        prototypeOfInstances
+          patternIs('functional-shared') ? Object.prototype :
+            patternIs('pseudoclassical') ? constructor.prototype :
+              prototypeOfInstances
       );
 
       var constructionArgs = option('constructionArgs') || [];
@@ -59,7 +59,7 @@ var verifyClass = function(constructor) {
           var instance = Object.create(constructor.prototype);
           var constructorReturn = constructor.prototype.constructor.apply(instance, constructionArgs);
           if (constructorReturn && constructorReturn !== instance) {
-            console.warn("Psuedoclassical constructor returned something explicitly (returns `this` implicitly by default).");
+            console.warn('Psuedoclassical constructor returned something explicitly (returns `this` implicitly by default).');
           }
           return instance;
         }
@@ -82,7 +82,7 @@ var verifyClass = function(constructor) {
         var instance;
 
         beforeEach(function() {
-          instance = instantiate()
+          instance = instantiate();
         });
 
         it('makes new instances that delegate to appropriate prototype object', function() {
@@ -164,7 +164,7 @@ var verifyClass = function(constructor) {
 
       if (!_(options).isEmpty()) {
         console.warn('testClassPattern is being invoked with unused options: ', options);
-      };
+      }
     }
-  }
+  };
 };
